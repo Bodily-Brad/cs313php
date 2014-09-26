@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>HelloWorld</title>
+  <title>Hello, World</title>
 </head>
 <body>
-Hello, World.
+Hello, World. Coming from GitHub now.
 </body>
 </html>
