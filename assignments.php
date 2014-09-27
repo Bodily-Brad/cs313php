@@ -7,9 +7,8 @@
   <title>About BCBodily - CS 313</title>
 </head>
 <body>
-    <header>
-<?php include './includes/_nav.php';  ?>
-    </header>
+<!-- Header -->
+<?php include './includes/_header.php';  ?>
     <h1>Assignments</h1>
     <h2>Coming Soon</h2>
 </body>

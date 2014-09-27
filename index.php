@@ -7,10 +7,8 @@
   <title>BCBodily - CS 313</title>
 </head>
 <body>
-    <header>
-<?php include './includes/_nav.php';  ?>
-    </header>
-    <h1>20 Questions</h1>
+<!-- Header -->
+<?php include './includes/_header.php';  ?>
     <h2>H2 Level Heading</h2>
 Hello, World. Coming from GitHub now.
 <p>Test Paragraph</p>
