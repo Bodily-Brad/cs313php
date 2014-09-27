@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/php/includes/_nav.php';  ?>
+<?php include './includes/_nav.php';  ?>
     </header>
     <h1>20 Questions</h1>
     <h2>H2 Level Heading</h2>
