@@ -11,5 +11,7 @@
 <?php include './includes/_header.php';  ?>
     <h1>Assignments</h1>
     <h2>Coming Soon</h2>
+    <!-- Footer -->
+<?php include './includes/_footer.php';  ?>    
 </body>
 </html>

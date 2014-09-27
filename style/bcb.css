@@ -1,5 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Lato|Poiret+One|Oswald);
+
 html {
     background-color: #126173;
+    font-family: 'Lato', sans-serif;
 }
 
 body {
@@ -9,6 +12,10 @@ body {
     margin: 0 auto;
     padding: 1.0em;
     border-radius: 1.0em;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Oswald', sans-serif;
 }
 
 h1 {
@@ -32,5 +39,58 @@ a:hover {
 }
 
 header {
+    font-family: 'Poiret One', cursive;
+}
 
+
+header img {
+    max-width: 64px;
+}
+
+header nav {
+    background-color: #498ba6;
+    color: #fafafa;
+    text-transform: uppercase;
+    border-radius: 0.5em;
+}
+
+header nav a,
+header nav a:active,
+header nav a:hover,
+header nav a:visited {
+    text-decoration: none;
+    color: #fafafa;
+}
+
+header nav ul {
+    font-size: 1.5em;
+}
+
+header nav ul li {
+    display: inline-block;
+    padding: 0.35em;
+    margin: 0.15em;
+}
+
+header nav ul li {
+
+}
+
+header nav ul li:hover {
+    color: #ffffff;
+    background-color: #027373;
+    border-radius: 0.5em;
+}
+
+header nav ul li:hover a {
+    color: #fafafa;
+}
+
+footer {
+    text-align: center;
+}
+
+.banner {
+    display: inline-block;
+    font-size: 2em;
 }
