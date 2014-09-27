@@ -1,16 +1,36 @@
+html {
+    background-color: #126173;
+}
+
 body {
-    background-color: #ffffe1;
-    color: #324032;
+    background-color: #fafafa;
+    color: #0c0d0d;
+    width: 50em;
+    margin: 0 auto;
+    padding: 1.0em;
+    border-radius: 1.0em;
 }
 
 h1 {
-    color: #22a8b5;
+    color: #126173;
     
 }
 h2, h3, h4, h5 {
-    color: #b7c22c;
+    color: #498ba6;
 }
 
-p {
-    font-size: 200%;
+a {
+    color: #027373;
+}
+
+a:visited {
+    color: #498ba6;
+}
+
+a:hover {
+    color: #126173;
+}
+
+header {
+
 }
