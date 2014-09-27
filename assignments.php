@@ -8,13 +8,7 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li><a href="about.php">About</a></li>
-                <li><a href="assignments.php">Assignments</a></li>
-            </ul>
-        </nav>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/php/includes/_nav.php';  ?>
     </header>
     <h1>Assignments</h1>
     <h2>Coming Soon</h2>
