@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="style/bcb.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="../style/bcb.css" media="screen">
   <title>BCBodily - CS 313</title>
 </head>
 <body>
 <!-- Header -->
-<?php include './includes/_header.php';  ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_header.php';  ?>
     <h1>Just Getting Started</h1>
     <p>What we have here is the very beginning of a project for a CS 313 course.
     For now, there's not a whole lot here, so I put up a little about myself.</p>
