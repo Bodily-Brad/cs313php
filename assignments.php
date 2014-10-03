@@ -9,7 +9,9 @@
 <!-- Header -->
 <?php include './includes/_header.php';  ?>
     <h1>Assignments</h1>
-    <h2>Coming Soon</h2>
+    <ul>
+        <li><a href="assignments/2.03/">2.03 PHP Survey</a></li>
+    </ul>
     <!-- Footer -->
 <?php include './includes/_footer.php';  ?>    
 </body>
