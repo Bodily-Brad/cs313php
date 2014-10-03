@@ -9,7 +9,6 @@
 <!-- Header -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_header.php';  ?>
     <h1>PHP Survey</h1>
-    <?php echo $_SERVER['DOCUMENT_ROOT'] ?>
     <!-- Footer -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php';  ?>
 </body>
