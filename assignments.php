@@ -10,7 +10,7 @@
 <?php include './includes/_header.php';  ?>
     <h1>Assignments</h1>
     <ul>
-        <li><a href="assignments/2.03/">2.03 PHP Survey</a></li>
+        <li><a href="assignments/2.03/">2.03 PHP Survey</a> - Answer a few questions about a few guys...</li>
     </ul>
     <!-- Footer -->
 <?php include './includes/_footer.php';  ?>    

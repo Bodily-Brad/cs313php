@@ -96,3 +96,76 @@ footer {
     display: inline-block;
     font-size: 2em;
 }
+
+.centered {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.poll {
+    display: block;
+    margin: 0 auto;
+    padding: 0 0.5em;
+    padding-bottom: 0.5em;
+    max-width: 30em;
+    border-radius: 0.5em;
+    border-color: #498ba6;
+    border: 2px solid #498ba6;
+    background-color: #fafafa;
+}
+
+.poll h2 {
+    display: block;
+    margin: 0;
+    padding: 0px 0px 0px 0px;
+    border-bottom: 1px solid #498ba6;
+}
+
+.poll h2>span {
+    display: block;
+    font-size: 0.75em;
+    font-weight: normal;
+}
+
+.poll h3 {
+    display: block;
+    margin: 0;
+    margin-top: 0.5em;
+    padding: 0;
+}
+
+.poll label {
+    display: block;
+    margin: 0;
+}
+
+.poll label>span {
+    float: left;
+    text-align: right;
+    width: 9em;
+    padding-right: 1em;
+}
+
+.poll .button {
+    margin: 0 0.25em;
+    padding: 0.5em;
+    color: #fafafa;
+    background: #498ba6;
+    border: none;
+    border-radius: 0.25em;
+    box-shadow: 1px 2px 0px #000000;
+}
+
+.poll input[type="radio"] {
+    margin-left: 1em;
+    margin-right: 0.5em;
+}
+
+.poll .button:hover {
+    background: #027373;
+}
