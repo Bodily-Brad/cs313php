@@ -30,7 +30,7 @@ function loadDB()
             // Values for Chris's domain
             $dbHost = "http://php-cvergara.rhcloud.com";
             $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-            $dbUser = 'php';
+            $dbUser = 'php@localhost';
             $dbPassword = 'php-pass-150864067';  
         }   
     }
