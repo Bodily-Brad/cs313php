@@ -5,6 +5,7 @@ function loadDB()
 
     // Check for OpenShift environment var and connect accordingly
     $openShiftCheck = getenv('OPENSHIFT_MYSQL_DB_HOST');
+    $dbName = "scriptures_db";
 
     if ($openShiftCheck === null || $openShiftCheck == "")
     {
@@ -29,13 +30,28 @@ function loadDB()
             // Values for Chris's domain
             $dbHost = "http://php-cvergara.rhcloud.com";
             $dbPort = getenv('OPENSHIFT_MYSQL_DB_PORT');
-            $dbUser = getenv('php');
-            $dbPassword = getenv('php-pass-150864067');  
+            $dbUser = 'php';
+            $dbPassword = 'php-pass-150864067';  
         }   
     }
-
-    // Temp stuff
-    echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br >\n";
+    
+    // Attempt to load database
+    try
+    {
+        $db = new PDO("mysql:host=$dbHost:$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+        return $db;
+    }
+    catch (PDOException $ex)
+    {
+        echo "Error connecting to database.<br>";
+        echo "Error: " . $ex->getMessage() . "<br>";
+        die();
+    }
 }
 
-loadDB();
+$database = loadDB();
+
+foreach ($database->query("SELECT * FROM scriptures") as $row)
+{
+    echo $row["content"] . "<br>";
+}
