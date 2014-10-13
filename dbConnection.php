@@ -1,5 +1,6 @@
 <?php
 
+// calling loadDB returns a connection to the scriptures_db database.
 function loadDB()
 {
 
@@ -47,11 +48,4 @@ function loadDB()
         echo "Error: " . $ex->getMessage() . "<br>";
         die();
     }
-}
-
-$database = loadDB();
-
-foreach ($database->query("SELECT * FROM scriptures") as $row)
-{
-    echo $row["content"] . "<br>";
 }
