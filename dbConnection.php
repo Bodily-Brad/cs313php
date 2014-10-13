@@ -37,3 +37,5 @@ function loadDB()
     // Temp stuff
     echo "host:$dbHost:$dbPort dbName:$dbName user:$dbUser password:$dbPassword<br >\n";
 }
+
+loadDB();
