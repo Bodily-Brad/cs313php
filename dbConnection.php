@@ -17,7 +17,7 @@ function loadDB()
         // Use OpenShift
 
         // Values for across domains
-        $crossDomain = false;
+        $crossDomain = true;
         if ($crossDomain)
         {
             $dbHost = getenv('OPENSHIFT_MYSQL_DB_HOST');
