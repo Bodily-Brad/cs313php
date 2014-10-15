@@ -12,10 +12,13 @@
     <h1>The Game</h1>
     <?php
         // Get Items
-        $items = GetItems_Records();
+        $items = GetItems();
+        echo "<h2>Items</h2>";
         foreach ($items as $item)
         {
-            echo "ItemID: " . $item.GetItemID() . "<br>";
+            echo "ID: " . $item->GetItemID() . "<br>";
+            echo "Desc: " . $item->GetDescription() . "<BR>";
+            echo "<br>";
         }        
     
     ?>

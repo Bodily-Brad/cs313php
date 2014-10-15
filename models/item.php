@@ -14,6 +14,6 @@ class Item
     
     // Public Methods
     function GetItemID() { return $this->itemId; }
-    function GetDescription() { return $this->$description; }
+    function GetDescription() { return $this->description; }
     function SetDescription($description) { $this->description = $description; }
 }

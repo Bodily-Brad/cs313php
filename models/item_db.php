@@ -1,6 +1,6 @@
 <?php
-require_once '../dbConnection.php';
-require_once 'item.php';
+require_once '../models/dbGG.php';
+require_once '../models/item.php';
 
 // Create an Item Object from an Item Record
 function Item_Record_to_Object($record)
@@ -31,8 +31,8 @@ function GetItems()
     {
         $object = Item_Record_to_Object($record);
         $objects[] = $object;
+
     }
-    
     return $objects;   
 }
 
@@ -82,5 +82,6 @@ function GetItems_Records()
     
     if (!empty($results))
         return $results;
+
     return false;      
 }
