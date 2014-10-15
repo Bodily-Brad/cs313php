@@ -39,6 +39,6 @@
     replaced with something more appealing.</p>
     <p>Anyway, thanks for stopping by.</p>
     <!-- Footer -->
-<?php include './includes/_footer.php';  ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php';  ?>
 </body>
 </html>
