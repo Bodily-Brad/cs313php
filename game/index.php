@@ -1,4 +1,5 @@
 <!doctype html>
+<?php require_once '../models/item_db.php'; ?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -9,6 +10,11 @@
 <!-- Header -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_header.php';  ?>
     <h1>The Game</h1>
+    <?php
+        // Get Items
+        $allItems = GetItems_Records();
+    
+    ?>
 
     <!-- Footer -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php';  ?>
