@@ -12,6 +12,10 @@
     <ul>
         <li><a href="assignments/2.03/">2.03 PHP Survey</a> - Answer a few questions about a few guys...</li>
     </ul>
+    <h1>Group Assignments</h1>
+    <ul>
+        <li><a href="group/4.02/scriptures.php">4.02 - Scripture Database</a></li>
+    </ul>
     <!-- Footer -->
 <?php include './includes/_footer.php';  ?>    
 </body>
