@@ -12,7 +12,11 @@
     <h1>The Game</h1>
     <?php
         // Get Items
-        $allItems = GetItems_Records();
+        $items = GetItems_Records();
+        foreach ($items as $item)
+        {
+            echo "ItemID: " . $item.GetItemID() . "<br>";
+        }        
     
     ?>
 

@@ -6,7 +6,7 @@ function loadDB()
 
     // Check for OpenShift environment var and connect accordingly
     $openShiftCheck = getenv('OPENSHIFT_MYSQL_DB_HOST');
-    $dbName = "scriptures_db";
+    $dbName = "guessing_game";
 
     if ($openShiftCheck === null || $openShiftCheck == "")
     {
