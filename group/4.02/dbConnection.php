@@ -12,6 +12,7 @@ function loadDB()
     {
         // Use Local
         // TO DO: Add your own local credintials
+        require("setLocalDatabaseCredentials.php");
     }
     else
     {
