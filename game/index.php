@@ -1,29 +1,54 @@
-<!doctype html>
-<?php require_once '../models/item_db.php'; ?>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="../style/bcb.css" media="screen">
-  <title>BCBodily - CS 313</title>
-</head>
-<body>
-<!-- Header -->
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_header.php';  ?>
-    <h1>The Game</h1>
-    <?php
-        // Get Items
-        $items = GetItems();
-        echo "<h2>Items</h2>";
-        foreach ($items as $item)
-        {
-            echo "ID: " . $item->GetItemID() . "<br>";
-            echo "Desc: " . $item->GetDescription() . "<BR>";
-            echo "<br>";
-        }        
+<?php
+    // Get Action
+    if (isset($_GET["action"])) {
+        $action = $_GET["action"];
+    } elseif (isset($_POST["action"])) {
+        $action = $_POST["action"];
+    } else {
+        $action = "showsearchitems";
+    }
     
-    ?>
+    switch (strtolower($action))
+    {
+        case "none":
+            break;
+        case "showallitems":
+            require_once('../models/item.php');
+            $items = Item::LoadAllFromDatabase();
+            include('../views/displayItems.php');            
+            break;
+        case "showallquestions":
+            require_once('../models/question.php');
+            $questions = Question::LoadAllFromDatabase();
+            include('../views/displayQuestions.php');            
+            break;            
+        case "searchitems":
 
-    <!-- Footer -->
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php';  ?>
-</body>
-</html>
+            require_once('../models/item.php');            
+            if (isset($_GET["description"])) {
+                $description = $_GET["description"];
+            } elseif (isset($_POST["description"])) {
+                $description = $_POST["description"];
+            } else {
+                $description = "";
+            }
+            
+            if ($description != '')
+                $message = "Searching for '$description'";
+            else {
+                $message = "Showing all items.";
+            }
+            $description .= "%";
+            $items = Item::Search($description);            
+            include('../views/displayItems.php');
+            break;
+        case "showsearchitems":
+            include('../views/searchItemsForm.php');
+            break;
+        case "testq":
+            require_once('../models/question.php');
+            $test = Question::LoadAllFromDatabase();
+            print_r($test) . "<br>";
+            break;
+    }
+?>
