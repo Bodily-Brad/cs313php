@@ -4,4 +4,4 @@ require_once('../models/question.php');
 if (!isset($question))
     $question = new Question();
 ?>    
-<?=$question->GetKey()?>:<?=$question->GetText()?> <br>
+<?=$question->GetText()?> <br>

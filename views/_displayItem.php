@@ -4,4 +4,4 @@ require_once('../models/item.php');
 if (!isset($item))
     $item = new Item();
 ?>    
-<?=$item->GetDescription()?> (id: <?=$item->GetItemID()?>)<br>
+<?=$item->GetDescription()?><br>
