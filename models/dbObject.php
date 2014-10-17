@@ -1,5 +1,5 @@
 <?php
-require_once '../models/dbGG.php';
+require_once 'dbGG.php';
 class DBObject
 {
     // Protected Static Members
@@ -32,13 +32,18 @@ class DBObject
     {
         $records = static::readRecords();
         
-        $objects = array();
-        foreach ($records as $record)
+        if (!empty($records))
         {
-            $object = static::createFromRecord($record);
-            $objects[] = $object;
+            $objects = array();
+            foreach ($records as $record)
+            {
+                $object = static::createFromRecord($record);
+                $objects[] = $object;
+            }
+            return $objects;
         }
-        return $objects;
+        // Else
+        return false;
     }
     
     public static function Search($criteria)
