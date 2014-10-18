@@ -6,7 +6,6 @@
     <!-- HEADER -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_header.php';  ?>
     <h1>Teach the Game</h1>
-    <h2>Pool</h2>
     <?php
 
     $itemID = mt_rand(1,count($items));
