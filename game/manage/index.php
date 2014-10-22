@@ -18,6 +18,11 @@
             $items = Item::LoadAllFromDatabase();
             include $_SERVER['DOCUMENT_ROOT'] . '/views/manageItems.php';
             break;
+        case "managequestions":
+            require_once($_SERVER['DOCUMENT_ROOT'] . '/models/question.php');
+            $questions = Question::LoadAllFromDatabase();
+            include $_SERVER['DOCUMENT_ROOT'] . '/views/manageQuestions.php';
+            break;
         case "none":
         default:
             include $_SERVER['DOCUMENT_ROOT'] . '/views/management.php';

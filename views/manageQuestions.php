@@ -5,23 +5,23 @@
 <body>
     <!-- HEADER -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_header.php';  ?>
-    <h1>Item Management</h1>
+    <h1>Question Management</h1>
     <?php if (isset($message)) echo $message . '<br>'; ?>
-    <h2>Add Items</h2>
+    <h2>Add Questions</h2>
     <form>
         <label>Description</label><input type='text' name='itemDescription' required>
         <input type='submit' value='Add Item'>
     </form>
-    <h2>List Items</h2>
+    <h2>List Questions</h2>
     <?php
         if (isset($message)) echo $message . '<br>';
 
-        if (!empty($items)):?>
+        if (!empty($questions)):?>
             <table>
                 <tr><th colspan='2'>Item Name</th><tr>
-                <?php foreach ($items as $item):?>
+                <?php foreach ($questions as $question):?>
                     <tr>
-                        <td><?php echo $item->GetDescription(); ?></td>
+                        <td><?php echo $question->GetText(); ?></td>
                         <td><a href=''>Edit</a></td>
                     </tr>
                 <?php endforeach; ?>
