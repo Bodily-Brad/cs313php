@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 body {
-    font-family: "Times New Roman", Times, serif
+    font-family: "Times New Roman", Times, serif;
 }
 
 h1, h2, h3, h4, h5 {
@@ -17,11 +17,12 @@ h1, h2, h3, h4, h5 {
 }
 
 article {
+    display: block;
     padding: 0;
     border: 3px solid #ffffff;
     box-shadow: 0px 0px 3px 2px #3e3e3b;
     border-radius: 1em;
-    max-width: 55em;
+    max-width: 27em;
     background-color: #f9f6ed;
 }
 
@@ -57,7 +58,8 @@ form {
     border: 3px solid #ffffff;
     box-shadow: 0px 0px 3px 2px #3e3e3b;
     border-radius: 1em;
-    max-width: 55em;
+    width: 27em;
+    max-width: 27em;
     background-color: #f9f6ed;
 }
 
