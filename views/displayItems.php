@@ -11,18 +11,16 @@
     <?php
         if (isset($message)) echo $message . '<br>';
 
-        if (!empty($items))
-        {
-            echo "<ul>";
-            foreach ($items as $item)
-                echo "<li>" . $item->GetDescription() . "</li>";
-            echo "</ul>";
-        }
-        else
-        {
-            echo "No Items found.<br>";
-        }
-    ?>
+        if (!empty($items)):?>
+            <table>
+                <tr><th>Item Name</th><tr>
+                <?php foreach ($items as $item):?>
+                    <tr><td><?php echo $item->GetDescription(); ?></td></tr>
+                <?php endforeach; ?>
+            </table>
+        <?php else: ?>
+            No Items found.<br>
+        <?php endif ?>
     <!-- Footer -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php';  ?>    
 </body>

@@ -92,6 +92,10 @@ footer {
     text-align: center;
 }
 
+tr:nth-child(even) {
+    background-color: #d1e2e9;
+}
+
 .banner {
     display: inline-block;
     font-size: 2em;

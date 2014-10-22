@@ -8,20 +8,19 @@
     <h1>Display Questions</h1>
 <?php include '../views/_searchQuestionsForm.php'; ?>
     <h2>Search Results</h2>
-    <?php if (isset($message)) echo $message . '<br>'; ?>
     <?php
-    if (!empty($questions))
-    {
-        echo "<ul>";
-        foreach ($questions as $question)
-            echo "<li>" . $question->GetText() . "</li>";
-        echo "</ul>";
-    }
-    else
-    {
-        echo "No items found.<br>";
-    }
-    ?>
+        if (isset($message)) echo $message . '<br>';
+
+        if (!empty($questions)):?>
+            <table>
+                <tr><th>Answer Text</th><tr>
+                <?php foreach ($questions as $question):?>
+                    <tr><td><?php echo $question->GetText(); ?></td></tr>
+                <?php endforeach; ?>
+            </table>
+        <?php else: ?>
+            No Items found.<br>
+        <?php endif ?>
     <!-- Footer -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php';  ?>    
 </body>

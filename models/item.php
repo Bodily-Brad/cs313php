@@ -36,5 +36,31 @@ class Item extends DBObject
         {
             return false;
         }
-    }    
+    }
+    
+    protected static function insert($description)
+    {
+        global $db;
+        $query = "
+            INSERT INTO items (description)
+            VALUES (:description)";
+        
+        // Insert item
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':description', $description);
+            
+            $statement->execute();
+            $newId = $db->lastInsertId();
+            
+            $statement->closeCursor();
+            
+            return $newId;
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+
+        // Else
+        return false;         
+    }
 }
