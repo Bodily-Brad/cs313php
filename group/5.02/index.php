@@ -41,8 +41,9 @@
             insertScriptureWithTopics($book, $chapter, $verse, $content, $topics);
             
             $scriptures = getAllScriptures();
-            include('views/displayAllScriptures.php');
+            include('views/addScriptureForm.php');
             break;
+        default:
         case "showaddscriptureform":
             $scriptures = getAllScriptures();
             $topics = getAllTopics();            
@@ -51,17 +52,11 @@
         // Show scriptures by topic
         case "showscripturesbytopic":
             $topicName = getVariable("topicName");
+            if ($topicName == "") $topicName = "%";
             $scriptures = getScripturesByTopic($topicName);
-            $message = "Showing results for: $topicName";
-            include('views/displayAllScriptures.php');            
-            break;
-        // Show all Scriptures
-        case "showallscriptures":
-        default:
-            // Get all scriptures
-            $scriptures = getAllScriptures();
-            $message = "Showing All Scriptures";
-            include('views/displayAllScriptures.php');
+            if ($topicName != "%")
+                $message = "Showing results for: $topicName";
+            include('views/addScriptureForm.php');            
             break;
     }
     
