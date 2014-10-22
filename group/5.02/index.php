@@ -1,7 +1,6 @@
-<!--
-5.02 Control
--->
 <?php
+    // 5.02 Control
+
     // Connect to database
     require_once('dbConnection.php');
     require_once('models/scriptures.php');
@@ -19,6 +18,7 @@
     
     switch (strtolower($action))
     {
+        // Insert new scripture/topics
         case "addscripture":
             // Get Values
             $book = getVariable("book");
@@ -37,18 +37,20 @@
                 $topics[] = $newTopicID;
             }
             
-            // function insertScriptureWithTopics($book, $chapter, $verse, $content, $topicIDs)
             insertScriptureWithTopics($book, $chapter, $verse, $content, $topics);
             
             $scriptures = getAllScriptures();
             include('views/addScriptureForm.php');
             break;
+
+        // Show add scripture form
         default:
         case "showaddscriptureform":
             $scriptures = getAllScriptures();
             $topics = getAllTopics();            
             include('views/addScriptureForm.php');
             break;
+        
         // Show scriptures by topic
         case "showscripturesbytopic":
             $topicName = getVariable("topicName");
@@ -60,6 +62,7 @@
             break;
     }
     
+    // Gets a passed variable
     function getVariable($variableName)
     {
         if (isset($_GET[$variableName])) {
@@ -72,6 +75,4 @@
         
         return $return;
     }
- 
-    
 ?>
