@@ -8,21 +8,19 @@
     <h1>Item Management</h1>
     <?php if (isset($message)) echo $message . '<br>'; ?>
     <h2>Add Items</h2>
-    <form>
+    <form action="/game/manage/" method="POST">
         <label>Description</label><input type='text' name='itemDescription' required>
+        <input type="hidden" name="action" value="addNewItem">
         <input type='submit' value='Add Item'>
     </form>
     <h2>List Items</h2>
     <?php
-        if (isset($message)) echo $message . '<br>';
-
         if (!empty($items)):?>
             <table>
-                <tr><th colspan='2'>Item Name</th><tr>
+                <tr><th>Item Name</th><tr>
                 <?php foreach ($items as $item):?>
                     <tr>
                         <td><?php echo $item->GetDescription(); ?></td>
-                        <td><a href=''>Edit</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

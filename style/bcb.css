@@ -92,6 +92,10 @@ footer {
     text-align: center;
 }
 
+form label {
+    margin-right: 1em;
+}
+
 tr:nth-child(even) {
     background-color: #d1e2e9;
 }

@@ -8,21 +8,19 @@
     <h1>Question Management</h1>
     <?php if (isset($message)) echo $message . '<br>'; ?>
     <h2>Add Questions</h2>
-    <form>
-        <label>Description</label><input type='text' name='itemDescription' required>
+    <form action="/game/manage/" method="POST">
+        <label>Description</label><input type='text' name='questionText' required>
+        <input type="hidden" name="action" value="addNewQuestion">
         <input type='submit' value='Add Item'>
     </form>
     <h2>List Questions</h2>
     <?php
-        if (isset($message)) echo $message . '<br>';
-
         if (!empty($questions)):?>
             <table>
-                <tr><th colspan='2'>Item Name</th><tr>
+                <tr><th>Question</th><tr>
                 <?php foreach ($questions as $question):?>
                     <tr>
                         <td><?php echo $question->GetText(); ?></td>
-                        <td><a href=''>Edit</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

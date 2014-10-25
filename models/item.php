@@ -24,21 +24,30 @@ class Item extends DBObject
     function GetDescription() { return $this->description; }
     function SetDescription($description) { $this->description = $description; }
     
-    // Protected Methods
-    protected static function createFromRecord($record)
+    public static function GetItemExistsByDescription($description)
     {
-        if (!empty($record))
+        global $db;
+
+        // Query String
+        $query = "
+            SELECT *
+            FROM     " . static::$tableName . "
+            WHERE    description LIKE :description";
+        
+        try
         {
-            $instance = new self($record[static::$keyName], $record['description']);
-            return $instance;
-        }
-        else
-        {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':description', $description);
+            $statement->execute();
+            $result = $statement->fetch();
+            $statement->closeCursor();
+            if (!empty($result)) return true;
+        } catch (PDOException $ex) {
             return false;
-        }
+        }      
     }
     
-    protected static function insert($description)
+    public static function Insert($description)
     {
         global $db;
         $query = "
@@ -55,6 +64,7 @@ class Item extends DBObject
             
             $statement->closeCursor();
             
+            // Return new ID
             return $newId;
         } catch (Exception $ex) {
             echo $ex->getMessage();
@@ -62,5 +72,19 @@ class Item extends DBObject
 
         // Else
         return false;         
+    }    
+    
+    // Protected Methods
+    protected static function createFromRecord($record)
+    {
+        if (!empty($record))
+        {
+            $instance = new self($record[static::$keyName], $record['description']);
+            return $instance;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

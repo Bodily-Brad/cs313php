@@ -21,6 +21,57 @@ class Question extends DBObject
         $this->text = $text;
     }
     
+    // Public Methods
+    public static function GetQuestionExistsByText($text)
+    {
+        global $db;
+
+        // Query String
+        $query = "
+            SELECT *
+            FROM     " . static::$tableName . "
+            WHERE    text LIKE :text";
+        
+        try
+        {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':text', $text);
+            $statement->execute();
+            $result = $statement->fetch();
+            $statement->closeCursor();
+            if (!empty($result)) return true;
+        } catch (PDOException $ex) {
+            return false;
+        }      
+    }
+    
+    public static function Insert($text)
+    {
+        global $db;
+        $query = "
+            INSERT INTO questions (text)
+            VALUES (:text)";
+        
+        // Insert item
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':text', $text);
+            
+            $statement->execute();
+            $newId = $db->lastInsertId();
+            
+            $statement->closeCursor();
+            
+            // Return new ID
+            return $newId;
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+
+        // Else
+        return false;         
+    }       
+    
     // Protected Methods
     protected static function createFromRecord($record)
     {
