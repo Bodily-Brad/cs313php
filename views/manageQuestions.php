@@ -11,7 +11,7 @@
     <form action="/game/manage/" method="POST">
         <label>Description</label><input type='text' name='questionText' required>
         <input type="hidden" name="action" value="addNewQuestion">
-        <input type='submit' value='Add Item'>
+        <input type='submit' value='Add Question'>
     </form>
     <h2>List Questions</h2>
     <?php
