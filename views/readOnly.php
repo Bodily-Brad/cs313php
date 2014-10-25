@@ -12,7 +12,8 @@
     <h2>Help Teach The Game</h2>
     <a href='/game/teach/' title='Teach the game'>Teach the game</a>
     <h2>Manage The Game</h2>
-    <a href='/game/manage/' title='Manage the game'>Manage the Game</a>
+    <a href="manage/?action=ManageItems">Manage Items</a><br>
+    <a href="manage/?action=ManageQuestions">Manage Questions</a><br>    
     <!-- Footer -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php';  ?>    
 </body>
