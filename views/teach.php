@@ -6,6 +6,7 @@
     <!-- HEADER -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_header.php';  ?>
     <h1>Teach the Game</h1>
+    <?php if (isset($message)) echo $message . '<br>'; ?>    
     <?php
 
     $itemID = mt_rand(1,count($items));
@@ -23,7 +24,9 @@
         ?><input type='radio' name='answer' value='<?=$answer->GetKey()?>'><?=$answer->GetText()?><br>
             <?php endforeach; ?>
         <br>
-        <input type='hidden' value='teach'>
+        <input type='hidden' name='itemID' value='<?=$item->GetItemID()?>'>
+        <input type='hidden' name='questionID' value='<?=$question->GetKey()?>'>
+        <input type='hidden' name='action' value='teach'>
         <input type='submit' value='Submit Answer'>
     </form>
     
