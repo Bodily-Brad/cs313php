@@ -30,7 +30,7 @@
             $items = Item::LoadAllFromDatabase();
             $questions = Question::LoadAllFromDatabase();
             $answers = Answer::LoadAllFromDatabase();
-            include($_SERVER["DOCUMENT_ROOT"] . '/views/teach.php');
+            include($_SERVER["DOCUMENT_ROOT"] . '/views/game/teach.php');
             break;             
         // Random Item - Random Question
         case "none":
@@ -42,7 +42,7 @@
             $items = Item::LoadAllFromDatabase();
             $questions = Question::LoadAllFromDatabase();
             $answers = Answer::LoadAllFromDatabase();
-            include($_SERVER["DOCUMENT_ROOT"] . '/views/teach.php');
+            include($_SERVER["DOCUMENT_ROOT"] . '/views/game/teach.php');
             break;                       
     }
 ?>

@@ -1,0 +1,149 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 21, 2014, 10:02:00 AM
+    Author     : Brad
+*/
+
+body {
+    font-family: "Times New Roman", Times, serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: Georgia, "Times New Roman", Times, serif;    
+}
+
+article {
+    display: block;
+    padding: 0;
+    border: 3px solid #ffffff;
+    box-shadow: 0px 0px 3px 2px #3e3e3b;
+    border-radius: 1em;
+    max-width: 27em;
+    background-color: #f9f6ed;
+}
+
+section {
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    border-bottom: 1px solid #2a3753;
+}
+
+section:last-child {
+    border-bottom: 0px;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5 {
+    margin: 0 auto;
+    margin-bottom: 0.5em;
+    padding: 0.25em;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    text-align: center;
+    color: #fff;
+    background-color: #3e3e3b;    
+}
+
+form {
+    display: inline-block;
+    margin-bottom: 1em;
+    border: 3px solid #ffffff;
+    box-shadow: 0px 0px 3px 2px #3e3e3b;
+    border-radius: 1em;
+    width: 32em;
+    max-width: 32em;
+    background-color: #f9f6ed;
+}
+
+form h1,
+form h2,
+form h3,
+form h4,
+form h5 {
+    margin: 0 auto;
+    margin-bottom: 0.5em;
+    padding: 0.25em;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    text-align: center;
+    color: #fff;
+    background-color: #3e3e3b;
+}
+
+label {
+    display: inline-block;
+    width: 6.5em;
+    vertical-align: top;
+    margin-top: 0.25em;
+    margin-left: 0.25em;
+    font-family: Georgia, "Times New Roman", Times, serif
+}
+
+form .checkbox {
+    margin-right: 0.5em;
+}
+
+input {
+    margin-left: 0.5em;
+    margin-top: 0.25em;
+}
+
+input[type=text],
+input[type=password] {
+    width: 15em;
+    
+}
+
+input[type=submit] {
+    display: block;
+    float: right;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    margin-top: 0.25em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #fff;
+    background-color: #3e3e3b;
+    border: 1px solid #000000;
+    border-radius: 0.333em;
+    font-size: 1.125em;
+}
+
+input[type=submit]:hover {
+    background-color: #2a3753;    
+}
+
+textarea {
+    margin-right: 0.5em;
+}
+
+.message {
+    display:block;
+    margin: 0 auto;
+    text-align: center;
+    color: #2a3753;
+    font-size: 1.25em;
+}
+
+.scripturereference {
+    font-weight: bold;
+}
+
+.scriptureContent {
+
+}
+
+.topicsLabel {
+    font-style: italic;
+}
+
+.topicItem {
+    
+}
+

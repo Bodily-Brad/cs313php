@@ -8,9 +8,14 @@
     <h1>Teach the Game</h1>
     <?php if (isset($message)) echo $message . '<br>'; ?>    
     <?php
-
-    $itemID = mt_rand(1,count($items));
-    $questionID = mt_rand(1, count($questions));
+    
+    // Slow random for non-sequential
+    $itemID = mt_rand(0,count($items)-1);
+    // Get random item's ItemID
+    $itemID = $items[$itemID]->GetItemID();
+    
+    $questionID = mt_rand(0, count($questions)-1);
+    $questionID = $questions[$questionID]->GetKey();
     
     $item = Item::LoadFromDatabase($itemID);
     $question = Question::LoadFromDatabase($questionID);

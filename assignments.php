@@ -16,6 +16,7 @@
     <ul>
         <li><a href="group/4.02/scriptures.php">4.02 - Scripture Database</a></li>
         <li><a href="group/5.02/">5.02 - Scripture Database (with Insert)</a></li>
+        <li><a href="group/6.02/">6.02 - User creation/login</a></li>
     </ul>
     <!-- Footer -->
 <?php include './includes/_footer.php';  ?>    

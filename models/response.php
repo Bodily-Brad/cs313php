@@ -64,6 +64,20 @@ class Response extends DBObject
         }      
     }    
     
+    public static function GetResponseCount($itemID, $questionID, $answerID)
+    {
+        // Check for existing response
+        $response = static::GetResponseByCriteria($itemID, $questionID, $answerID);
+        if (!empty($response))
+        {
+            return $response->GetCount();
+        }
+        else
+        {
+            return 0;
+        }        
+    }
+    
     public static function GetResponseExistsByCriteria($itemID, $questionID, $answerID)
     {
         global $db;

@@ -28,9 +28,9 @@ class DBObject
         }
     }
     
-    public static function LoadAllFromDatabase()
+    public static function LoadAllFromDatabase($excludedKeys = null)
     {
-        $records = static::readRecords();
+        $records = static::readRecords($excludedKeys);
         
         if (!empty($records))
         {
@@ -92,15 +92,34 @@ class DBObject
             exit;
         }        
     }
-    
-    protected static function readRecords()
+        
+    protected static function readRecords($excludedKeys = null)
     {
         global $db;
-
+        
         $query = "
             SELECT *
-            FROM     " . static::$tableName . "
-            ORDER BY " . static::$defaultSortField;
+            FROM     " . static::$tableName;
+            
+        // Add clause for excluded keys, if necessary
+        if (!empty($excludedKeys))
+        {
+            $query .= " WHERE " . static::$keyName . " NOT IN (";
+            for ($i = 0; $i < count($excludedKeys); $i++)
+            {
+                $excludedKey = $excludedKeys[$i];
+                $query .= $excludedKey;
+                if (
+                        (count($excludedKeys) > 1) && 
+                        ($i < (count($excludedKeys)-1)))
+                    $query .= ", ";
+            }
+
+            $query .= ")";
+        }
+        
+        // Add sorting
+        $query .= " ORDER BY " . static::$defaultSortField;
 
         try {
             $statement = $db->prepare($query);

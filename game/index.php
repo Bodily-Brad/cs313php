@@ -1,4 +1,7 @@
 <?php
+    // Start session
+    session_start();
+    
     // Get Action
     if (isset($_GET["action"])) {
         $action = $_GET["action"];
@@ -70,6 +73,11 @@
             $description .= "%";
             $questions = Question::Search($description);            
             include('../views/displayQuestions.php');
+            break;
+        case "startnewgame":
+            require_once $_SERVER['DOCUMENT_ROOT'] . '/models/item.php';
+            $items = Item::LoadAllFromDatabase();
+            include $_SERVER['DOCUMENT_ROOT'] . '/views/newGame.php';
             break;
     }
 ?>
