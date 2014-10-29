@@ -60,6 +60,31 @@ class Response extends DBObject
         }         
     }
     
+    public static function GetQuestionIDWithLowestResponseCountForItem($itemID)
+    {
+        global $db;
+
+        // Query String
+        $query = "
+            SELECT questionID, SUM(count) AS total
+            FROM     " . static::$tableName . "
+            WHERE itemID = :itemID
+            GROUP BY questionID
+            ORDER BY total";
+        
+        try
+        {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':itemID', $itemID);
+            $statement->execute();
+            $result = $statement->fetch();
+            $statement->closeCursor();
+            return $result['questionID'];
+        } catch (PDOException $ex) {
+            return false;
+        }         
+    }
+    
     public static function GetResponseByCriteria($itemID, $questionID, $answerID)
     {
         global $db;

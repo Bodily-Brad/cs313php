@@ -11,9 +11,6 @@
     
 
     
-    $questionID = mt_rand(0, count($questions)-1);
-    $questionID = $questions[$questionID]->GetKey();
-    
     $item = Item::LoadFromDatabase($itemID);
     $question = Question::LoadFromDatabase($questionID);
     ?>

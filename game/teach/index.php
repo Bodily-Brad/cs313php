@@ -33,7 +33,12 @@
             $itemID = $items[$itemID]->GetItemID();
             $itemID = Response::GetItemIDWithLowestResponseCount();             
             
+            // Get random questionID
             $questions = Question::LoadAllFromDatabase();
+            $questionID = mt_rand(0, count($questions)-1);
+            $questionID = $questions[$questionID]->GetKey();
+            $questionID = Response::GetQuestionIDWithLowestResponseCountForItem($itemID);
+            
             $answers = Answer::LoadAllFromDatabase();
             include($_SERVER["DOCUMENT_ROOT"] . '/views/game/teach.php');
             break;             
