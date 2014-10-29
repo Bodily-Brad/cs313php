@@ -9,14 +9,14 @@
     <?php if (isset($message)) echo $message . '<br>'; ?>    
     <?php
     
-    // Slow random for non-sequential
-    $itemID = mt_rand(0,count($items)-1);
-    // Get random item's ItemID
-    $itemID = $items[$itemID]->GetItemID();
-    $itemID = Response::GetItemIDWithLowestResponseCount();
-    
-    $questionID = mt_rand(0, count($questions)-1);
-    $questionID = $questions[$questionID]->GetKey();
+//    // Slow random for non-sequential
+//    $itemID = mt_rand(0,count($items)-1);
+//    // Get random item's ItemID
+//    $itemID = $items[$itemID]->GetItemID();
+//    $itemID = Response::GetItemIDWithLowestResponseCount();
+//    
+//    $questionID = mt_rand(0, count($questions)-1);
+//    $questionID = $questions[$questionID]->GetKey();
     
     $item = Item::LoadFromDatabase($itemID);
     $question = Question::LoadFromDatabase($questionID);
