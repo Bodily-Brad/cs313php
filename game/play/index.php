@@ -28,6 +28,19 @@
         case "end":
             Game::EndGame();
             break;
+        case strtolower("confirmGuess"):
+            $itemID = getVariable("itemID");
+            Game::FinishGameCorrect($itemID);
+            break;
+        case strtolower("denyGuess"):
+            $itemID = getVariable("itemID");
+            Game::FinishGameIncorrect();
+            break;
+        case strtolower("provideCorrectItem"):
+            $itemID = getVariable("itemID");
+            Game::RecordPlayerResponses($itemID);
+            Game::EndGame();
+            break;
     }
     
     $gameState = Game::GetGameState();
@@ -47,22 +60,36 @@
 
                 $questionID = Game::GetRandomQuestionID();
             }
-            
-            if (!empty($questionID))
+            if (!empty($questionID) && ($questionsRemaining > 0))
             {
                 $question = Question::LoadFromDatabase($questionID);
                 $answers = Answer::LoadAllFromDatabase();
                 include $_SERVER['DOCUMENT_ROOT'] . '/views/game/askQuestion.php';
-            }
+            }            
             else
             {
                 // We're out of questions now
-                $temp = Game::AttemptSolve();
+                $guessItemID = Game::AttemptSolve();
+                $guessItem = Item::LoadFromDatabase($guessItemID);
                 
                 $message = "I'm out of questions, sorry.";
                 include $_SERVER['DOCUMENT_ROOT'] . '/views/game/endGame.php';
             }
             break;
+        
+        case Game::$GAMESTATE_FINISH_CORRECT:
+            Game::EndGame();
+            $message = "Wow... I can't believe I guessed right.";
+            include $_SERVER['DOCUMENT_ROOT'] . '/views/game/finishGame.php';
+            break;
+        case Game::$GAMESTATE_FINISH_INCORRECT:
+            $excludedKeys = array();
+            $excludedKeys[] = $itemID;
+            $items = Item::LoadAllFromDatabase($excludedKeys);
+            $message = "So, you beat me. I can't say I'm surprised, but let me "
+                    . "know what you were thinking of, and I'll do better next time.";
+            include $_SERVER['DOCUMENT_ROOT'] . '/views/game/pickItem.php';
+            break;            
         case Game::$GAMESTATE_SOLVING:
             // For now, we're just going to start a new game
         default:

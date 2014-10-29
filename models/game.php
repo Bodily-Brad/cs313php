@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/question.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/answer.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/item.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/response.php';
 
 class Game
 {
@@ -9,6 +10,8 @@ class Game
     protected static $GAMESTATE_KEY = "gamestate";
     public static $GAMESTATE_STARTED = "GAMESTATE_STARTED";
     public static $GAMESTATE_SOLVING = "GAMESTATE_SOLVING";
+    public static $GAMESTATE_FINISH_CORRECT = "GAMESTATE_FINISH_CORRECT";
+    public static $GAMESTATE_FINISH_INCORRECT = "GAMESTATE_FINISH_INCORRECT";
     
     protected static $QUESTIONS_LEFT_KEY = "questionsLeft";
     protected static $QUESTIONS_LIST_KEY = "questionsAnswered";
@@ -33,15 +36,41 @@ class Game
         $items = Item::LoadAllFromDatabase();
         
         $confidences = array();
-        foreach ($items as $item)
+        foreach ($items as $itemID=>$item)
         {
             $confidences[$item->GetItemID()] = 0;
             
             // Iterate through questions in answered questions array
-            $confidences[$item->GetItemID()] = Response::GetResponseCount($item->GetItemID(), $questionID, $answerID);
+            $questionsAnswered = static::GetQuestionsAnswered();
+            foreach ($questionsAnswered as $questionAnswered)
+            {
+                $questionID = $questionAnswered['question'];
+                $answerID = $questionAnswered['answer'];
+                $count = Response::GetResponseCount($item->GetItemID(), $questionID, $answerID);
+                $confidences[$item->GetItemID()] += $count;
+                
+                //$answer = Answer::LoadFromDatabase($answerID);
+                //$question = Question::LoadFromDatabase($questionID);
+                
+                //echo "{$item->GetDescription()} : {$question->GetText()} : {$answer->GetText()} : +$count<br>";
+                
+            }            
         }
         
-        return $confidences;
+        // Find max confidence
+        $maxConf = 0;
+        $maxConfID = 0;
+        
+        foreach ($confidences as $key=>$confidence)
+        {
+            if ($confidence >= $maxConf)
+            {
+                $maxConf = $confidence;
+                $maxConfID = $key;
+            }
+        }
+        
+        return $maxConfID;
     }
     
     static function EndGame()
@@ -50,6 +79,17 @@ class Game
         unset($_SESSION[static::$GAMESTATE_KEY]);
         unset($_SESSION[static::$QUESTIONS_LEFT_KEY]);
         unset($_SESSION[static::$QUESTIONS_LIST_KEY]);
+    }
+    
+    static function FinishGameCorrect($itemID)
+    {
+        static::setGameState(static::$GAMESTATE_FINISH_CORRECT);
+        static::RecordPlayerResponses($itemID);
+    }
+    
+    static function FinishGameIncorrect()
+    {
+        static::setGameState(static::$GAMESTATE_FINISH_INCORRECT);
     }
     
     static function GetRandomQuestionID()
@@ -86,6 +126,29 @@ class Game
         
         static::setQuestionsAnswered($questionsAnswered);
         static::SetQuestionsLeft(static::GetQuestionsLeft()-1);
+    }
+    
+    // Takes all recorded responses, and assigns them to the specified itemID
+    static function RecordPlayerResponses($itemID)
+    {
+        //$item = Item::LoadFromDatabase($itemID);
+        //echo "These are for {$item->GetDescription()}:<br>";
+        
+        $questionsAnswered = static::GetQuestionsAnswered();
+        foreach ($questionsAnswered as $questionAnswered)
+        {
+            $questionID = $questionAnswered['question'];
+            $answerID = $questionAnswered['answer'];
+            //$count = Response::GetResponseCount($item->GetItemID(), $questionID, $answerID);
+            //$confidences[$item->GetItemID()] += $count;
+
+            $answer = Answer::LoadFromDatabase($answerID);
+            $question = Question::LoadFromDatabase($questionID);
+
+            Response::IncrementCount($itemID, $questionID, $answerID);
+            //echo "{$item->GetDescription()} : {$question->GetText()} : {$answer->GetText()}<br>";
+
+        }        
     }
     
     static function StartNewGame()

@@ -7,27 +7,21 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_header.php';  ?>
         <h1><?php if (isset($message)) echo $message;?></h1>
         <p>
-            Normally at this point, I'd try to tell you what item you were
-            thinking of. But, as it stands, I simply don't know yet. Hang in
-            there with me, but for now you might want to...
+            Okay, here's the big moment... where you thinking of:
         </p>
-        <a href="?action=End">Start Over</a>
-        <h2>Other Stuff</h2>
-        <p>
-            Oh, you're still here, don't worry about this stuff, it's for me.
-        </p>
-        <h3>Answers</h3>
-        <pre>
-        <?php
-            print_r(Game::GetQuestionsAnswered());
-        ?>
-        </pre>
-        <h3>Confidences</h3>
-        <pre>
-        <?php
-            print_r($temp);
-        ?>
-        </pre>        
+        <h2><?=$guessItem->GetDescription()?></h2>
+        <form method='post' action='/game/play/'>
+            <input type='hidden' name='action' value='confirmGuess'>
+            <input type='hidden' name='itemID' value='<?=$guessItem->GetItemID()?>'>
+            <input type='submit' value='Yes'>
+        </form>
+        <form method='post' action='/game/play/'>
+            <input type='hidden' name='action' value='denyGuess'>
+            <input type='hidden' name='itemID' value='<?=$guessItem->GetItemID()?>'>
+            <input type='submit' value='No'>
+        </form>
+        
+        <a href="?action=End">Start Over</a>       
     <!-- Footer -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php';  ?>    
 </body>
