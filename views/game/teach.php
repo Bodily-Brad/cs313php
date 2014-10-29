@@ -20,20 +20,21 @@
     $item = Item::LoadFromDatabase($itemID);
     $question = Question::LoadFromDatabase($questionID);
     ?>
-    <form action='/game/teach/'>
-        <label>Here's your item: </label> <?=$item->GetDescription()?><br><br>
-        <label>Here's your question: </label> <?=$question->GetText() ?><br><br>
-        <label>What's the answer?</label><br><br>
-        <?php
-            foreach ($answers as $answer):
-        ?><input type='radio' name='answer' value='<?=$answer->GetKey()?>'><?=$answer->GetText()?><br>
-            <?php endforeach; ?>
-        <br>
-        <input type='hidden' name='itemID' value='<?=$item->GetItemID()?>'>
-        <input type='hidden' name='questionID' value='<?=$question->GetKey()?>'>
-        <input type='hidden' name='action' value='teach'>
-        <input type='submit' value='Submit Answer'>
-    </form>
+        Here's your item:
+        <h2><?=$item->GetDescription()?></h2>
+        Here's your question:
+        <h2><?=$question->GetText() ?></h2>
+        What's the answer?<br>
+        <?php foreach ($answers as $answer):?>
+            <form method='POST' action='/game/teach/' style='display: inline-block'>
+                <input type='hidden' name='action' value='teach'>
+                <input type='hidden' name='itemID' value='<?=$item->GetItemID()?>'>
+                <input type='hidden' name='answer' value='<?=$answer->GetKey()?>'>
+                <input type='hidden' name='questionID' value='<?=$question->GetKey()?>'>
+                <input type='submit' value="<?=$answer->GetText()?>">
+            </form>
+        <?php endforeach; ?>
+
     
     <!-- Footer -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php';  ?>    
