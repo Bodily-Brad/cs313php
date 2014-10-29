@@ -128,6 +128,35 @@ class Response extends DBObject
         }      
     }
     
+    public static function GetTotalResponsesByQuestionAndItem($questionID, $itemID)
+    {
+        global $db;
+
+        // Query String
+        $query = "
+            SELECT questionID, itemID, SUM( count ) AS total
+            FROM     " . static::$tableName . "
+            WHERE questionID = :questionID AND itemID = :itemID
+            GROUP BY questionID, itemID";
+        
+        try
+        {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':questionID', $questionID);
+            $statement->bindValue(':itemID', $itemID);
+            $statement->execute();
+            $result = $statement->fetch();
+            $statement->closeCursor();
+            
+            if (empty($result))
+                return 0;
+            else
+                return $result['total'];
+        } catch (PDOException $ex) {
+            return false;
+        }           
+    }
+    
     public static function IncrementCount($itemID, $questionID, $answerID)
     {
         // Check for existing response

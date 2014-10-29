@@ -47,12 +47,15 @@ class Game
                 $questionID = $questionAnswered['question'];
                 $answerID = $questionAnswered['answer'];
                 $count = Response::GetResponseCount($item->GetItemID(), $questionID, $answerID);
-                $confidences[$item->GetItemID()] += $count;
+                $totalCount = Response::GetTotalResponsesByQuestionAndItem($questionID, $item->GetItemID());
+                
+                if ($totalCount > 0)
+                    $confidences[$item->GetItemID()] += ($count/$totalCount);
                 
                 //$answer = Answer::LoadFromDatabase($answerID);
                 //$question = Question::LoadFromDatabase($questionID);
                 
-                //echo "{$item->GetDescription()} : {$question->GetText()} : {$answer->GetText()} : +$count<br>";
+                //echo "{$item->GetDescription()}({$item->GetItemID()}) : {$question->GetText()} : {$answer->GetText()} : $count / $totalCount<br>";
                 
             }            
         }
