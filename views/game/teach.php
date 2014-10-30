@@ -5,38 +5,30 @@
 <body>
     <!-- HEADER -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_header.php';  ?>
-    <h1>Teach the Game</h1>
-    <?php if (isset($message)) echo $message . '<br>'; ?>    
-    <?php
-    
-//    // Slow random for non-sequential
-//    $itemID = mt_rand(0,count($items)-1);
-//    // Get random item's ItemID
-//    $itemID = $items[$itemID]->GetItemID();
-//    $itemID = Response::GetItemIDWithLowestResponseCount();
-//    
-//    $questionID = mt_rand(0, count($questions)-1);
-//    $questionID = $questions[$questionID]->GetKey();
-    
-    $item = Item::LoadFromDatabase($itemID);
-    $question = Question::LoadFromDatabase($questionID);
-    ?>
-        Here's your item:
-        <h2><?=$item->GetDescription()?></h2>
-        Here's your question:
-        <h2><?=$question->GetText() ?></h2>
-        What's the answer?<br>
-        <?php foreach ($answers as $answer):?>
-            <form method='POST' action='/game/teach/' style='display: inline-block'>
-                <input type='hidden' name='action' value='teach'>
-                <input type='hidden' name='itemID' value='<?=$item->GetItemID()?>'>
-                <input type='hidden' name='answer' value='<?=$answer->GetKey()?>'>
-                <input type='hidden' name='questionID' value='<?=$question->GetKey()?>'>
-                <input type='submit' value="<?=$answer->GetText()?>">
-            </form>
-        <?php endforeach; ?>
-
-    
+    <div class='gameFrame'>
+        <div class='gameNote'>Teach the Game</div>
+        <div class='gameUserInputArea'>
+            If the item is...
+            <div class='gameQuestion'><?=$item->GetDescription()?></div>
+            ...and you were asked:
+            <div class='gameQuestion'><?=$question->GetText()?></div>
+            How would you answer?<br><br>
+            <div class='gameButtonArea'>
+                
+                <?php foreach ($answers as $answer):?>
+                    <form class='gameUserInput' method='POST' action='/game/teach/' style='display: inline-block'>
+                        <input type='hidden' name='action' value='teach'>
+                        <input type='hidden' name='itemID' value='<?=$item->GetItemID()?>'>
+                        <input type='hidden' name='answer' value='<?=$answer->GetKey()?>'>
+                        <input type='hidden' name='questionID' value='<?=$question->GetKey()?>'>
+                        <input type='submit' value="<?=$answer->GetText()?>">
+                    </form>
+                <?php endforeach; ?>
+                <br>
+            </div>
+        </div>
+        <div class='gameNote'><a href="/game/play/?action=End">Ready to Play?</a></div>
+    </div>    
     <!-- Footer -->
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/_footer.php';  ?>    
 </body>

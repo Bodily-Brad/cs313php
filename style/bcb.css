@@ -115,6 +115,97 @@ tr:nth-child(even) {
     color: #ff0000;
 }
 
+.gameFrame {
+    display: block;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0em;
+    border: 1px solid #000000;
+    border-radius: 0.5em;
+    background-color: #126173;
+    text-align: center;
+}
+
+.gameQuestion {
+    margin: 0.5em auto;
+    width: 85%;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 1.75em;
+}
+
+.gameUserInputArea {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.25em 0 1em 0;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.gameButtonArea {
+    width: 35em;
+    margin: 0 auto;
+    text-align: center;
+}
+.gameNote {
+    text-align: center;
+    margin: 0;
+    padding: 0.5em;
+    color: #ffffff;
+}
+
+.gameInstructions {
+    width: 95%;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.gameItemList ul {
+    list-style-type: none;
+    width: 95%;
+    margin: 0 auto;
+    padding: 1em;
+    text-align: left;
+}
+
+.gameItemList ul li {
+    display: inline-block;
+    margin: 0.2em 1em;
+    padding: 0.1em;
+    padding-left: 0.5em;
+    padding-bottom: 0.2em;
+    min-width: 7.5em;
+    text-align: left;
+    border-radius: 0.5em;
+    background-color: #d1e2e9;
+}
+
+.gameNote a,
+.gameNote a:visited,
+.gameNote a:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.gameNote a:hover {
+    text-decoration: underline;
+}
+
+form.gameUserInput input {
+    min-width: 10em;
+    margin: 0.25em;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25em;
+}
+
+form.gameUserInput input[type=radio] {
+    min-width: 1em;
+    padding-left: 0;
+    margin: 0;
+}
+
 .poll {
     display: block;
     margin: 0 auto;

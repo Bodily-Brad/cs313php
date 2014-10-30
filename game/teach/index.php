@@ -46,6 +46,10 @@
             $questionID = Response::GetQuestionIDWithLowestResponseCountForItem($itemID);
             
             $answers = Answer::LoadAllFromDatabase();
+            
+            $item = Item::LoadFromDatabase($itemID);
+            $question = Question::LoadFromDatabase($questionID);
+    
             include($_SERVER["DOCUMENT_ROOT"] . '/views/game/teach.php');
             break;                       
     }
