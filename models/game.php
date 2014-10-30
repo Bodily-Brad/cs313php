@@ -46,16 +46,22 @@ class Game
             {
                 $questionID = $questionAnswered['question'];
                 $answerID = $questionAnswered['answer'];
+                
                 $count = Response::GetResponseCount($item->GetItemID(), $questionID, $answerID);
                 $totalCount = Response::GetTotalResponsesByQuestionAndItem($questionID, $item->GetItemID());
+                $averageCount = $totalCount / 4;                                // Hard set to 4 responses - this 'should' be a const somewhere...
                 
-                if ($totalCount > 0)
-                    $confidences[$item->GetItemID()] += ($count/$totalCount);
+                if ($averageCount > 0)                                          // protect against div/zero
+                    $increase = ($count/$averageCount - 1.0);
+                else
+                    $increase = 0;
+                
+                $confidences[$item->GetItemID()] += $increase;
                 
                 //$answer = Answer::LoadFromDatabase($answerID);
                 //$question = Question::LoadFromDatabase($questionID);
                 
-                //echo "{$item->GetDescription()}({$item->GetItemID()}) : {$question->GetText()} : {$answer->GetText()} : $count / $totalCount<br>";
+                //echo "{$item->GetDescription()}({$item->GetItemID()}) : {$question->GetText()} : {$answer->GetText()} : $count / $totalCount : $increase<br>";
                 
             }            
         }
