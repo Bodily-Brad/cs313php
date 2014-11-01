@@ -151,12 +151,11 @@ class Game
             //$count = Response::GetResponseCount($item->GetItemID(), $questionID, $answerID);
             //$confidences[$item->GetItemID()] += $count;
 
-            $answer = Answer::LoadFromDatabase($answerID);
-            $question = Question::LoadFromDatabase($questionID);
+            //$answer = Answer::LoadFromDatabase($answerID);
+            //$question = Question::LoadFromDatabase($questionID);
 
             Response::IncrementCount($itemID, $questionID, $answerID);
             //echo "{$item->GetDescription()} : {$question->GetText()} : {$answer->GetText()}<br>";
-
         }        
     }
     
