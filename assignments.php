@@ -11,6 +11,7 @@
     <h1>Assignments</h1>
     <ul>
         <li><a href="assignments/2.03/">2.03 PHP Survey</a> - Answer a few questions about a few guys...</li>
+        <li><a href="http://java-bcbodily.rhcloud.com/8.03/login.jsp">8.03 JSP Discussion Thread</a></li>
     </ul>
     <h1>Group Assignments</h1>
     <ul>
