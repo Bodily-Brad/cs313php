@@ -20,6 +20,7 @@
         <li><a href="group/5.02/">5.02 - Scripture Database (with Insert)</a></li>
         <li><a href="group/6.02/">6.02 - User creation/login</a></li>
         <li><a href="http://java-bcbodily.rhcloud.com/8.02/login.jsp">8.02 - User login</a></li>
+        <li><a href="http://java-bcbodily.rhcloud.com/9.02/search.jsp">9.02 - Movie Search</a></li>
     </ul>
     <!-- Footer -->
 <?php include './includes/_footer.php';  ?>    
